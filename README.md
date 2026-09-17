@@ -1,3 +1,34 @@
+# Pizza-Track 🍕 - Sistema de Gestión de Pedidos
+Sistema de gestión de pedidos de pizzería desarrollado en Java. Utiliza una arquitectura basada en **Listas Ligadas (Nodos)** para implemen
+---
+## 🏗️ Arquitectura del Proyecto
+El sistema está dividido en 5 clases independientes:
+1. **`Pizza.java`**: Modelo de datos del pedido. Contiene el nombre y un **arreglo de tamaño fijo (3)** para los ingredientes.
+2. **`Nodo.java`**: Estructura que almacena el objeto `Pizza` y la referencia al siguiente elemento.
+3. **`Pila.java`**: Implementación manual de la pila mediante nodos. Contiene los métodos obligatorios:
+ - `push()`: Inserta un elemento en el tope.
+ - `pop()`: Retira y devuelve el elemento del tope.
+ - `peek()`: Visualiza el tope sin retirarlo.
+ - `isEmpty()`: Evalúa si la pila está vacía.
+4. **`GestionPedidos.java`**: Controlador que coordina dos pilas manuales:
+ - **Pila Principal (Undo)**: Almacena los pedidos activos.
+ - **Pila Secundaria (Redo)**: Almacena temporalmente los pedidos deshechos.
+5. **`PizzaTrack.java`**: Clase principal con el menú interactivo en consola.
+---
+## 🔗 Lógica de Punteros en la Lista Ligada
+En Java, los punteros se manejan a través de referencias a objetos en memoria:
+* **`tope` (Puntero de Cima)**: Referencia que apunta al nodo superior de la pila.
+* **`siguiente` (Puntero Enlazado)**: Referencia interna dentro de cada `Nodo` que guarda la dirección del nodo inmediatamente inferior.
+* **Operación `push()`**:
+ 1. Se crea un `nuevoNodo`.
+ 2. Su puntero `siguiente` apunta hacia el nodo referenciado actualmente por `tope` (`nuevoNodo.setSiguiente(tope)`).
+ 3. El puntero `tope` se redirige hacia el `nuevoNodo` (`tope = nuevoNodo`).
+* **Operación `pop()`**:
+ 1. Se extrae el objeto referenciado por `tope`.
+ 2. El puntero `tope` avanza hacia el nodo inferior (`tope = tope.getSiguiente()`).
+ 3. El nodo desvinculado queda sin referencias y es liberado automáticamente por el Garbage Collector.
+
+
 ### `Nodo.java`
 
 ```
