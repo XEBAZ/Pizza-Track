@@ -60,6 +60,9 @@ javac *.java
 ```
 java PizzaTrack
 ```
+### `Nodo.java`
+
+```
 public class Nodo {
     private Pizza dato;
     
